@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { NextUIProvider } from '@nextui-org/react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +26,18 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NextUIProvider>
+          <header className="bg-[#fffff5] shadow-lg shadow-[#FAF6E6] rounded-b-3xl flex justify-center items-center">
+            <img
+              src="/logo-rm.png"
+              alt="Logo"
+              className="h-20"
+            />
+          </header>
+
+          <ToastContainer />
+          {children}
+        </NextUIProvider>
       </body>
     </html>
   );
